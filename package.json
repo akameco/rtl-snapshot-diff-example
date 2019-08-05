@@ -1,5 +1,5 @@
 {
-  "name": "rtl-snapshot-diff",
+  "name": "rtl-snapshot-diff-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -30,6 +30,9 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.0.0",
-    "@testing-library/react": "^8.0.7"
+    "@testing-library/react": "^8.0.7",
+    "@types/jest": "^24.0.16",
+    "prettier": "^1.18.2",
+    "snapshot-diff": "^0.5.2"
   }
 }

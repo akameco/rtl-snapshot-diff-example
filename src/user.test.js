@@ -1,5 +1,6 @@
 import React from "react";
 import { render, waitForElementToBeRemoved } from "@testing-library/react";
+import diff from "snapshot-diff";
 import User from "./user";
 
 beforeEach(() => {
@@ -34,4 +35,28 @@ test("renders user data", async () => {
   expect(getByLabelText(/name/i)).toHaveTextContent(fakeUser.name);
   expect(getByLabelText(/age/i)).toHaveTextContent(fakeUser.age);
   expect(getByLabelText(/address/i)).toHaveTextContent(fakeUser.address);
+});
+
+test("rendres user data diff ver", async () => {
+  const fakeUser = {
+    name: "akameco",
+    age: "25",
+    address: "Senju"
+  };
+  window.fetch.mockImplementationOnce(() =>
+    Promise.resolve({
+      json: () => Promise.resolve(fakeUser)
+    })
+  );
+
+  const { getByText, asFragment } = render(<User id="123" />);
+  const before = asFragment();
+
+  expect(window.fetch).toHaveBeenCalledTimes(1);
+  expect(window.fetch).toHaveBeenCalledWith("/123");
+
+  await waitForElementToBeRemoved(() => getByText(/loading/i));
+
+  const after = asFragment();
+  expect(before).toMatchDiffSnapshot(after);
 });

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendres user data diff ver 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+  <DocumentFragment>
+-   <div>
+-     loading...
+-   </div>
++   <details>
++     <summary
++       aria-label="name"
++     >
++       akameco
++     </summary>
++     <strong
++       aria-label="age"
++     >
++       25
++     </strong>
++      years old
++     <br />
++     lives in 
++     <span
++       aria-label="address"
++     >
++       Senju
++     </span>
++   </details>
+  </DocumentFragment>
+`;
